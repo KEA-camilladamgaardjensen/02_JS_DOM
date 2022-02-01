@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+      }
+      header {
+        margin-top: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      section {
+        margin: 10px;
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 15px;
+
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      section img {
+        padding: 10px;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      article {
+        border: solid black 1px;
+      }
+
+      footer {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+        border: solid black 1px;
+        text-align: center;
+      }
+
+      h1 {
+        border: solid black 1px;
+        text-align: center;
+      }
+
+      h2 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: 10px;
+      }
+
+      h3 {
+        margin: 10px;
+      }
+
+      p {
+        margin: 10px;
+      }
+
+      article:nth-child(1) {
+        color: black;
+      }
+
+      article:nth-child(2) {
+        color: black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Title</h1>
+    </header>
+
+    <main>
+      <h2>Undertitel</h2>
+      <section>
+        <article>
+          <img src="https://placeimg.com/640/500/any" />
+          <h3>Article 1</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+            ullam ipsa velit nesciunt praesentium recusandae quibusdam nisi
+            nobis itaque architecto, natus ab, debitis alias? Cum deserunt
+            aperiam sunt minima praesentium!
+          </p>
+        </article>
+
+        <article>
+          <img src="https://placeimg.com/640/480/nature" />
+          <h3>Article 2</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit
+            debitis molestiae molestias ad. Quis libero similique impedit nulla
+            atque modi nostrum incidunt veniam ipsa doloribus, obcaecati ex
+            animi non. Non.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>This is the footer</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", start);
+
+      function start() {
+        console.log("DOMContentLoaded");
+
+        const overskrift = document.querySelector("h1");
+        const undertitel = document.querySelector("h2");
+        const article1h3 = document.querySelector("article h3");
+        const article1p = document.querySelector("article p");
+        const article1img = document.querySelector("article img");
+        const article2h3 = document.querySelector("article:nth-child(2) h3");
+        const article2p = document.querySelector("article:nth-child(2) p");
+        const article2img = document.querySelector("article:nth-child(2) img");
+        const footer = document.querySelector("footer p");
+
+        //kalder på mine document.querySelector og viser dem i console
+        overskrift.textContent = "En ny overskrift";
+        console.log(overskrift.textContent);
+
+        undertitel.textContent = "Her er min undertitel";
+        console.log(undertitel.textContent);
+
+        //her har jeg ændret mit textContent til innerHTML, så teksten opfattes som HTML og dermed bliver <b>billede1</b> fed.
+        article1h3.innerHTML = "Overstående ses <b>billede1</b> i articel1";
+        console.log(article1h3.textContent);
+
+        article1p.innerHTML = "Her er teksten til mit <b>billede1</b>";
+        console.log(article1p.textContent);
+        //   article1img.textContent;
+        console.log(article1img);
+        article2h3.innerHTML = "Overstående ses <b>billede1</b> i articel2";
+        console.log(article2h3.textContent);
+        article2p.innerHTML = "Her er teksten til mit <b>billede2</b>";
+        console.log(article2p.textContent);
+        //   article2img.textContent;
+        console.log(article2img);
+        footer.textContent = "Her er min footer";
+        console.log(footer.textContent);
+
+        //udskift af billeder
+        const img1 = document.querySelector("article img");
+        console.log(img1);
+        img1.src = "https://placeimg.com/640/480/arch";
+        img1.alt = "Mit første billede";
+
+        const img2 = document.querySelector("article:nth-child(2) img");
+        console.log(img2);
+        img2.src = "https://placeimg.com/640/480/tech";
+        img2.alt = "Mit andet billede";
+
+        //tilføj et nyt element i form af article
+        let mainSection = document.querySelector("section");
+        let newArticle = document.createElement("article");
+        let newOverskrift = document.createElement("h3");
+        //tekst til overskriften
+        let overskriftText = document.createTextNode("Article 3");
+        //indsæt tekst i overskrift
+        newOverskrift.appendChild(overskriftText);
+        //tilføj overskrift til article
+        newArticle.appendChild(newOverskrift);
+        //tilføj article til section
+        mainSection.appendChild(newArticle);
+      }
+      const img = document.querySelector("img");
+      console.log(img);
+
+      img.addEventListener("click", skiftBillede);
+
+      function skiftBillede() {
+        console.log("skift");
+        img.src = "https://placeimg.com/640/480/people";
+      }
+    </script>
+  </body>
+</html>
